@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav>
-            <img src="src/assets/pinia.png" alt="pinia logo">
+            <img src="./pinia.png" alt="pinia logo">
             <h2>Pinia Tasks</h2>
         </nav>
     </div>
