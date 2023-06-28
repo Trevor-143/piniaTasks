@@ -58,5 +58,32 @@ export default {
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        height: 100%;
+        min-height: 300px;
+    }
+    .top {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+    .top input {
+        max-width: 100%;
+        border: none;
+        outline: none;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        background-color: #eee;
+        
+    }
+    .top button {
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        background-color: rgb(181, 255, 101);
+        color: #000;
+        font-weight: 600;
+        width: fit-content;
+        margin: 1rem auto;
+        cursor: pointer;
     }
 </style>
