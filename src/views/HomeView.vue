@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="task in tasks" :key="task.id">
+      <li v-if="tasks.length > 0" v-for="task in tasks" :key="task.id">
         <input type="checkbox" v-model="task.completed" @change="switchTask(taskID)" />
         <div class="content" :class="{ done : task.completed }" >
           <h3>{{ task.title }}</h3>
@@ -9,6 +9,9 @@
           <h4>Time Added: {{ task.timeAdded }}</h4>
         </div>
         <button type="button" @click="removeTask(task.id)" >Delete</button>
+      </li>
+      <li v-else >
+        <p>There no tasks yet</p>
       </li>
     </ul>
   </div>
