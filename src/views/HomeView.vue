@@ -1,12 +1,14 @@
 <template>
   <div>
-    <input v-model="newTask" type="text" />
-    <button @click="addTask">Add Task</button>
-
     <ul>
       <li v-for="task in tasks" :key="task.id">
         <input type="checkbox" v-model="task.completed" @change="switchTask(taskID)" />
-        {{ task.title }}
+        <div class="content" :class="{ done : task.completed }" >
+          <h3>{{ task.title }}</h3>
+          <h4>Time Added: {{ task.timeAdded }}</h4>
+          <h5>Date Added: {{ task.dateAdded }}</h5>
+        </div>
+        <button type="button" @click="removeTask(task.id)" >Delete Task</button>
       </li>
     </ul>
   </div>
@@ -14,35 +16,33 @@
 
 <script>
 import { useTaskStore } from "../stores/taskStore"
-import { ref, computed } from "vue";
+import { computed } from "vue";
 
 export default {
+  components: {
+  },
   setup() {
     const taskStore = useTaskStore();
-
-    const newTask = ref('');
-    
     const tasks = computed(() => taskStore.tasks);
     
-    const addTask = () => {
-      taskStore.createTask({
-        id: Math.random(),
-        title: newTask.value,
-        completed: false,
-      });
-      newTask.value = '';
-    }
-
     const switchTask = (taskID) => {
       taskStore.completeTask(taskID)
     }
+    const removeTask = (taskID) => {
+      taskStore.removeTask(taskID)
+    }
 
     return {
-      newTask,
       tasks,
-      addTask,
-      switchTask
+      switchTask,
+      removeTask
     };
   },
 };
 </script>
+
+<style>
+.done {
+  background-color: rgb(139, 255, 139);
+}
+</style>
