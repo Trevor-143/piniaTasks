@@ -90,6 +90,12 @@ button {
   right: 0;
   margin: 0.5rem;
 }
+p {
+  height: 300px;
+  width: 100%;
+  text-align: center;
+  color: #323232;
+}
 .done {
   background-color: rgba(55, 255, 0, 0.3);;
 }
